@@ -1,0 +1,90 @@
+import React, { useContext, useEffect, useState } from 'react';
+import Link from 'next/link';
+import { MdHome } from "react-icons/md";
+import { BiHome, BiListUl, BiMailSend, BiLogOut ,BiLogIn ,BiUserVoice ,BiUserPin} from "react-icons/bi";
+
+import Head from '../Head';
+import Footer from '../Footer';
+import Logo from '../Logo'
+
+import { UserContext, } from '../../../containers/User'
+import { BsSliders, BsX, BsList } from "react-icons/bs";
+
+import { LogoBox ,IconLogo,Container, Content, Header, MenuSection, MenuItem, SignInButton ,MobileMenuLink, MobileMenuClose, MobileMenuPanel, MobileMenuOpen, MobileMenu, } from './styles';
+import configs from '../../../configs';
+
+export default function Layout(props) {
+	const user = useContext(UserContext);
+	const [open, setOpen] = useState(false);
+
+	const tabs = [
+		{
+			label: 'الرئيسية',
+			icon: <BiHome />,
+			link: '/dashboard',
+			color: '#5f84ff'
+		},
+		{
+			label: ' انضم كمعلن',
+			icon: <BiUserPin />,
+			link: '/register',
+			color: '#edbb42'
+		},
+		{
+			label: ' انضم كمؤثر',
+			icon: <BiUserVoice />,
+			link: '/register_influencer',
+			color: '#edbb42'
+		},
+		{
+			label: 'تواصل معنا',
+			icon: <BiMailSend />,
+			link: '/contact',
+			color: '#edbb42'
+		}
+	];
+	return <>
+		<Head title={props.title} />
+		<Container dir="rtl">
+			<Content>
+			<MobileMenu>
+			<MobileMenuPanel open={open}>
+				<MobileMenuOpen onClick={() => { setOpen(!open) }}><BsList /></MobileMenuOpen>
+				<MobileMenuClose onClick={() => { setOpen(false) }}><BsX /></MobileMenuClose>
+				{tabs.map(item => (
+					<Link href={item.link} key={item.label}>
+						<MobileMenuLink onClick={()=>{setOpen(false)}}>
+							{item.icon}
+							{item.label}
+						</MobileMenuLink>
+					</Link>
+				))}
+				{user.loggedIn && <MobileMenuLink onClick={() => { setOpen(false); user.logout() }}>
+					<BiLogOut />
+					الخروج
+				</MobileMenuLink>}
+				{!user.loggedIn && <MobileMenuLink href="/login">
+					<BiLogIn />
+					الدخول
+				</MobileMenuLink>}
+			</MobileMenuPanel>
+		</MobileMenu>   
+				<Header>
+					<LogoBox>
+						<Logo width={140} />
+					</LogoBox>
+					<Link href="/"><IconLogo /></Link>
+					<MenuSection>
+						<MenuItem href='/dashboard'>الرئيسية</MenuItem>
+						<MenuItem href="/register"> انضم كمعلن</MenuItem>
+						<MenuItem href="/register_influencer">انضم كمؤثر</MenuItem>
+						<MenuItem href="/contact">تواصل معنا</MenuItem>
+					</MenuSection>
+					{user.loggedIn &&<SignInButton onClick={() => { user.logout() }}>الخروج</SignInButton>}
+					{!user.loggedIn &&<SignInButton href="/login">الدخول</SignInButton>}
+				</Header>
+			</Content>
+			{props.children}
+		</Container>
+	</>
+};

@@ -1,0 +1,101 @@
+import React, { useContext, useEffect, useState } from 'react';
+import { useSnackbar } from 'notistack';
+import { useRouter } from 'next/router'
+
+import { FiCheck, FiCheckCircle } from "react-icons/fi";
+import { FaYoutube, FaSnapchatGhost, FaFacebookF, FaTwitter, FaInstagram, FaTiktok, FaTimes } from "react-icons/fa";
+import moment from 'moment/min/moment-with-locales'
+moment.locale('ar-sa');
+
+import * as api from '../../../utils/api';
+
+import { UserContext, } from '../../../containers/User'
+
+import Layout from '../../common/Layout'
+import Card from '../../common/Card'
+import Form from '../../common/Form'
+import Loader from '../../common/Loader'
+import Collapse from '../../common/Collapse'
+import Button from '../../common/Button'
+
+import { Container, Content, DeleteIcon, StatusText, SentContent, SentSubTitle, SentIcon, InfluencerContent, PlatformRow, PlatformRowContent, Title, SubTitle, SubTitle2, HeaderContent, InfluencerPlatform, Avatar, InfluencerName, StyledIcon } from './styles';
+
+const PLATFORM_ICONS = {
+	youtube: <FaYoutube />,
+	snapchat: <FaSnapchatGhost />,
+	twitter: <FaTwitter />,
+	instagram: <FaInstagram />,
+	tiktok: <FaTiktok />,
+	facebook: <FaFacebookF />
+};
+
+const PLATFORM_NAMES = {
+	youtube: "يوتيوب",
+	snapchat: "سنابشات",
+	twitter: "تويتر",
+	instagram: "إنستاقرام",
+	tiktok: "تيكتوك",
+	facebook: "فيسبوك"
+};
+
+
+export default function Cart() {
+	const user = useContext(UserContext);
+	const [loading, setLoading] = useState(false);
+	const [sent, setSent] = useState(false);
+	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const router = useRouter();
+	const [data, setData] = useState({});
+
+	useEffect(() => {
+		init();
+	}, []);
+
+
+	const init = async () => {
+		/*let res = await api.get(`/api/v1/front/ads/quotations/${router.query.id}/`);
+		setData(res.data)
+		//console.log(res.data);*/
+	};
+
+	const submit = async () => {
+		let res = await api.get(`/quotations/${router.query.id}/confirm`, {
+
+		});
+		setSent(true);
+	};
+
+	if (loading) {
+		return <Layout title={"طلباتي"} backLink={"/"}>
+			<Container>
+				<SentContent>
+					<Loader />
+				</SentContent>
+			</Container>
+		</Layout>
+	}
+
+	if (sent) {
+		return <Layout title={"طلباتي"} backLink={"/"}>
+			<Container>
+				<SentContent>
+					<SentIcon><FiCheckCircle /></SentIcon>
+					<Title>تم إرسال الفاتورة</Title>
+					<SentSubTitle>تم إرسال الفاتورة إلى بريدك الإلكتروني</SentSubTitle>
+				</SentContent>
+			</Container>
+		</Layout>
+	}
+
+	return <Layout title={"طلباتي"} backLink={"/"}>
+		<Container>
+			<Title>الرد على عرض السعر #{router.query.id}</Title>
+			<Card>
+				<SubTitle2>
+					بطلب الفاتورة أنت توافق على عرض السعر وعلى <a href="/terms" target="_blank">إتفاقية وشروط الإستخدام</a>.
+				</SubTitle2>
+				<Button primary={true} onClick={()=>{submit()}}>طلب الفاتورة</Button>
+			</Card>
+		</Container>
+	</Layout>
+};
