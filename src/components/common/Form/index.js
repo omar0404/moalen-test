@@ -118,7 +118,7 @@ export default function Form(props) {
 	const ref = useRef(null);
    
    const onChangeHandling = () => {
-	   props.onChangeHandling(ref.current.values) 
+	props.onChangeHandling && props.onChangeHandling(ref.current.values) 
    }
 
 	return (

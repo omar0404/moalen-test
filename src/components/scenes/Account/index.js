@@ -35,20 +35,29 @@ export default function Cart() {
 	}, []);
 
 	const init = async () => {
-		setLoading(true);
-		let res2 = await api.get("/fields");
-		setCompanyFields(res2.data.data);
-		let res = await api.get(`/profile`);
-		setData(res.data.data);
-		setLoading(false);
+		try{
+			setLoading(true);
+			let res2 = await api.get("/fields");
+			setCompanyFields(res2.data.data);
+			let res = await api.get(`/profile`);
+			setData(res.data.data);
+			setLoading(false);
+
+		}catch(err){
+			console.log(err)
+		}
 	};
 
 	const submit = async (values) => {
+		try{
 		setLoading(true);
 		let res = await api.post(`/profile`, values);
 		user.updateUser(values)
 		router.push("/dashboard")
 		setLoading(false);
+		}catch(err){
+			console.log(err);
+		}
 	}
 
 	if (loading) {

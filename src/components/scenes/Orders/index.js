@@ -52,9 +52,13 @@ export default function Cart() {
 	}, []);
 
 	const init = async () => {
-		let res = await api.get(`/ads`);
-		////console.log(JSON.stringify(res.data.data));
-		setData(res.data.data);
+		try{
+			let res = await api.get(`/ads`);
+			////console.log(JSON.stringify(res.data.data));
+			setData(res.data.data);
+		}catch(err){
+			console.log(err)
+		}
 	};
 
 	if (loading) {
