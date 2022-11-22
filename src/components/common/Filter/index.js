@@ -24,7 +24,6 @@ export default function Filter(props) {
 	const [update, setUpdate] = useState(0);
 	const [search, setSearch] = useState("");
 	const timeOut = useRef(null);
-
 	useEffect(() => {
 		init();
 	}, [props.open]);
@@ -83,21 +82,22 @@ export default function Filter(props) {
 						{ label: 'مؤثر', value: 'male' },
 						{ label: 'الكل', value: '' }
 					]} />
-					<StyledSelect label="موقع التأثير" onChange={e => { updateFilter('region_id', e.target.value) }} value={query['region_id'] || "" } options={regions.map(item => ({ value: item.id, label: item.name }))} />
-					<StyledSelect label="المتابعين" onChange={e => { updateFilter('followers_gender', e.target.value) }} value={query['followers_gender'] || 0} options={[
+					<StyledSelect label="موقع التأثير" onChange={e => { updateFilter('region_id', e.value) }} value={query['region_id'] || "" } options={regions.map(item => ({ value: item.id, label: item.name }))} />
+					<StyledSelect label="المتابعين" onChange={e => { updateFilter('followers_gender', e.value) }} value={query['followers_gender'] || 0} options={[
+						{ label: 'الكل', value: 0 },
 						{ label: 'بنات', value: 2 },
 						{ label: 'شباب', value: 1 },
-						{ label: 'الكل', value: 0 },
 					]} />
 					<StyledSelect label="التاج" 
-						onChange={e => { updateFilter('tag_id', e.target.value) }} 
+						onChange={e => updateFilter('tag_id',e.map(e => e.value))} 
 						value={query['tag_id'] || ""} 
-						options={tags.map(item => ({ value: item.id, label: item.name }))} />
+						options={tags.map(item => ({ value: item.id, label: item.name }))}
+						isMultiple />
 					<StyledSelect label="المنصات" 
-						onChange={e => { updateFilter('platform_id', e.target.value) }} 
+						onChange={e => { updateFilter('platform_id', e.value) }} 
 						value={query['platform_id'] || "all"} 
 						options={platforms.map(item => ({ value: item.id, label: item.name }))} />
-					<StyledSelect label="أعمار المتابعين" onChange={e => { updateFilter('followers_ages', e.target.value) }} value={query['followers_ages'] || 0} options={[
+					<StyledSelect label="أعمار المتابعين" onChange={e => { updateFilter('followers_ages', e.value) }} value={query['followers_ages'] || 0} options={[
 						{ label: 'الكل', value: 0 },
 						{ label: '13-17', value: 1 },
 						{ label: '18-24', value: 2 },
@@ -106,7 +106,7 @@ export default function Filter(props) {
 						{ label: '45-54', value: 5 },
 						{ label: '55-64', value: 6 },
 					]} />
-					<StyledSelect label="عدد المتابعين" onChange={e => { updateFilter('followers_count', e.target.value) }} value={query['followers_count'] || 0} options={[
+					<StyledSelect label="عدد المتابعين" onChange={e => { updateFilter('followers_count', e.value) }} value={query['followers_count'] || 0} options={[
 						{ label: 'الكل', value: 0 },
 						{ label: '> 10k', value: 1 },
 						{ label: '> 50k', value: 2 },

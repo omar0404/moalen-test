@@ -8,7 +8,7 @@ import Layout from '../../components/common/BasicLayout'
 import Loader from '../../components/common/Loader'
 
 let authPages = ['/login', '/register', "/register_influencer", "/reset_password"];
-let allowPublic = ['/home','/commingSoon','/contact'];
+let allowPublic = ['/home','/commingSoon','/contact','/dashboard'];
 
 //let allowPublic = ['/terms', '/privacy', '/home','/commingSoon'];
 

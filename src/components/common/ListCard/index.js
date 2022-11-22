@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter} from 'next/router';
+
 
 import * as api from '../../../utils/api';
 import getImage from '../../../utils/getImage';
@@ -33,6 +35,7 @@ const PLATFORM_ICONS = {
 
 export default function ListCard(props) {
 	const user = useContext(UserContext);
+	const router = useRouter()
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState({});
 	const [tagProgress, setTagProgress] = useState({});
@@ -121,6 +124,9 @@ export default function ListCard(props) {
 		e.preventDefault();
 		e.stopPropagation();
 		let savedData = JSON.parse(JSON.stringify(data));
+		console.log("savedData",savedData,data)
+
+		if(!user) router.push(`/login/?redirect=/dashboard`);
 		savedData.adOptions = adOptions;
 		user.addToCart(savedData);
 		let itemData = savedData.adOptions.filter(i => i.active).map(item => ({

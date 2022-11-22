@@ -12,8 +12,8 @@ export const Container = styled.div`
     position: relative;
     svg {
         position: absolute;
-        left: 16px;
-        top: 14px;
+        left: 20px;
+        top: 24px;
         bottom: 14px;
         font-size: 16px;
         color: white;
