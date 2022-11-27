@@ -8,14 +8,10 @@ import getImage from '../../../utils/getImage';
 
 import { FaPlus, FaCheck, FaYoutube, FaSnapchatGhost, FaFacebookF, FaTwitter, FaInstagram, FaTiktok ,FaEllipsisH } from "react-icons/fa";
 
-import Modal from '../Modal'
-import Button from '../Button'
-import Toggle from '../Toggle'
-import Select from '../Select'
-import DateInput from '../DateInput';
+import AddToCartModal from '../AddToCartModal'
 import moment from 'moment/min/moment-with-locales';
 moment.locale('ar-sa');
-
+import useAddToCartModal from '../../../hooks/useAddToCartModal'
 import { UserContext, } from '../../../containers/User';
 import { useSnackbar } from 'notistack';
 
@@ -34,31 +30,15 @@ const PLATFORM_ICONS = {
 };
 
 export default function ListCard(props) {
-	const user = useContext(UserContext);
-	const router = useRouter()
+	const {setAdOptions,...user} = useContext(UserContext);
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState({});
 	const [tagProgress, setTagProgress] = useState({});
 	const [followers, setFollowers] = useState(0);
 	const [followersText, setFollowersText] = useState("");
-	const [show, setShow] = useState(false);
-	const [adOptions, setAdOptions] = useState([]);
-	const [update, setUpdate] = useState(0);
-
-	const ADS_TYPES = ["صورة", "تغطية"];
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
 
-	const fixNum = (replaceString) => {
-		let string = '';
-		string = '' + replaceString.toString();
-		let find = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-		let replace = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-		for (var i = 0; i < find.length; i++) {
-			string = string.replace(new RegExp(find[i], 'g'), replace[i]);
-		}
-		return string;
-	};
+	const {addCart,setShowAddToCartModal,showAddToCartModal} =  useAddToCartModal(props.data)
 
 	useEffect(() => {
 		if (!!props.data)
@@ -82,19 +62,6 @@ export default function ListCard(props) {
 					active: true
 				})
 			});
-		} else {
-			/* let res = await api.get(`/influencers/${props.data.id}`);
-			res.data.data.influencer.platforms.forEach(p => {
-				total = + p.followers_count;
-				adOptions.push({
-					platform_id: p.id,
-					ads_types_list: p.ads_types || [],
-					ads_types: "",
-					name: p.name,
-					published_date: new Date(),
-					active: true
-				})
-			}); */
 		}
 		setFollowers(total);
 		if (total > 1000000) {
@@ -111,39 +78,16 @@ export default function ListCard(props) {
 	};
 
 	const add = () => {
-		setShow(true);
+		setShowAddToCartModal(true);
 	};
 
-	const changeOptions = (i, key, value) => {
-		adOptions[i][key] = value;
-		setAdOptions(adOptions);
-		setUpdate(c => c + 1);
-	};
 
-	const addToCart = async(e) => {
+	const onShowPricePress = e => {
 		e.preventDefault();
 		e.stopPropagation();
-		let savedData = JSON.parse(JSON.stringify(data));
-		console.log("savedData",savedData,data)
+		addCart()
+	}
 
-		if(!user) router.push(`/login/?redirect=/dashboard`);
-		savedData.adOptions = adOptions;
-		user.addToCart(savedData);
-		let itemData = savedData.adOptions.filter(i => i.active).map(item => ({
-			publish_date: fixNum(moment(item.publish_date).format("YYYY-MM-Do")),
-			ads_types: [item.ads_types],
-			platform_id: item.platform_id
-		}));
-		let restemp = await api.post(`/influencers/${savedData.id}/add_to_cart`, { platforms: itemData });
-		if(restemp.data.error){
-			setShow(true);
-			enqueueSnackbar(restemp.data.message, {
-				variant: 'error',
-			});
-		}else {
-			setShow(false);
-		}
-	};
 
 	if (loading) {
 		return <Card>
@@ -223,31 +167,10 @@ export default function ListCard(props) {
 				</CardContent>
 			</Link>
 		</Card>
-		<Modal show={show} updateShow={(show) => { setShow(show) }}>
-			<ModalTitle>إختر منصات الإعلان!</ModalTitle>
-			<ModalContent>
-				{
-					adOptions.map((p, i) => (
-						<SectionRow key={`row_`+i}>
-							<Row style={{ flex: 1,  padding: 0, width: '100%' }}>
-								<Toggle style={{ flex: 1 }} noMargin={true} value={p.active} onChange={value => { changeOptions(i, 'active', value) }} />
-								<ModalStyledIcon style={{ flex: 1 }} active={p.active}>{!!PLATFORM_ICONS[p.name.toLowerCase()] && PLATFORM_ICONS[p.name.toLowerCase()]}</ModalStyledIcon>
-							</Row>
-							<Row disable={!p.active} style={{ flex: 2, margin: 0, padding: 0, width: '100%', opacity: p.active ? 1 : 0.5 }}>
-								<Select onChange={e => { changeOptions(i, 'ads_types',  e.target.value); }} active={p.active} label="نوع الإعلان" options={[{label: "اختر من القائمة", value: ""}].concat(p.ads_types_list.map(item => ({label: item.type, value: item.type})))} value={p.ads_types} />
-								<DateInput onChange={value => { changeOptions(i, 'published_date', value) }} label="تاريخ الإعلان" value={p.published_date} />
-							</Row>
-						</SectionRow>
-					))
-				}
-			</ModalContent>
-			<ModalButtons>
-				{adOptions.filter(e => e.active).length > 0 && adOptions.filter(e => e.active).length == adOptions.filter(e => e.active).filter(e => e.ads_types != "").length ?
-					<Button onClick={e =>addToCart(e)} primary={true}>اضغط هنا لعرض السعر</Button>
-					:
-					<Button disable="true" primary={true} style={{opacity: 0.5}}>اضغط هنا لعرض السعر</Button>
-				}
-			</ModalButtons>
-		</Modal>
+		<AddToCartModal
+		show={showAddToCartModal}
+		toggleInfluencerModal={setShowAddToCartModal}
+		onShowPricePress={onShowPricePress}
+		/>
 	</>
 };

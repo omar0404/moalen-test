@@ -27,7 +27,7 @@ export default function Flow() {
 	const router = useRouter()
 	const [loading, setLoading] = useState(false);
 	const user = useContext(UserContext);
-
+	
 	useEffect(() => {
 		init();
 	}, []);
@@ -82,7 +82,10 @@ export default function Flow() {
 		try {
 			let res = await api.post("/login", values);
 			if(!res.data.error) {
-				user.login(res.data.data);				
+				user.login(res.data.data);	
+				if (router.query && router.query.from) {
+					router.push({pathname:router.query.from,query:router.query},router.query.from);
+	 			}			
 			} else {
 				if(!!res.data.message) {
 					enqueueSnackbar(res.data.message, {

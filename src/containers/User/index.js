@@ -7,16 +7,11 @@ export const UserContext = createContext();
 import Layout from '../../components/common/BasicLayout'
 import Loader from '../../components/common/Loader'
 
-let authPages = ['/login', '/register', "/register_influencer", "/reset_password"];
-let allowPublic = ['/home','/commingSoon','/contact','/dashboard'];
-
-//let allowPublic = ['/terms', '/privacy', '/home','/commingSoon'];
-
 export function UserProvider(props) {
 	const router = useRouter()
 	const [user, setUser] = useState({});
 	const [userType , setUSerType] = useState('');
-	const [loaded, setLoaded] = useState(false);
+	const [loaded, setLoaded] = useState(true);
 	const [loading, setLoading] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [currentRoute, setCurrentRoute] = useState("");
@@ -28,63 +23,13 @@ export function UserProvider(props) {
 	const [cartLength, setCartLength] = useState(0);
 	const [profileEditedData, setProfileEfitedData] = useState({});
 	const[categories,setUSerCategories] = useState([])
+	const [adOptions, setAdOptions] = useState([]);
 
 	const onRouteChange = (url, force) => {
 		setCurrentRoute(url);
 		return;
 	};
 
-	const checkAuthRoutes = (currentRoute) => {
-		let check = false;
-		authPages.forEach(route => {
-			if((currentRoute.split("?")[0] == route.split("?")[0]) || currentRoute.split("?")[0] == route.split("?")[0]+"/")
-				check = true;
-		});
-		return check;
-	};
-
-	const checkPublicRoutes = (currentRoute) => {
-		let check = false;
-		allowPublic.forEach(route => {
-			if((currentRoute.split("?")[0] == route.split("?")[0]) || currentRoute.split("?")[0] == route.split("?")[0]+"/")
-				check = true;
-		});
-		return check;
-	};
-
-	useEffect(() => {
-		if(!!currentRoute && currentRoute != "" && !loading) {
-			if(window.location.pathname != "" && window.location.pathname != currentRoute.split("?")[0]) {
-				router.push(window.location.pathname);
-			} else if(!loading) {
-				if(loggedIn && userType === 'influencer' && checkAuthRoutes(currentRoute.split("?")[0])) {
-					let redirectUrl = router.query.redirect || "/profileEdit";
-					if(redirectUrl.indexOf("login") != -1 || redirectUrl.indexOf("logout") != -1) {
-						redirectUrl = "/profileEdit";
-					}
-					router.push(redirectUrl);
-				}
-				else if (loggedIn && checkAuthRoutes(currentRoute.split("?")[0])) {
-					let redirectUrl = router.query.redirect || "/dashboard";
-					if(redirectUrl.indexOf("login") != -1 || redirectUrl.indexOf("logout") != -1) {
-						redirectUrl = "/dashboard";
-					}
-					router.push(redirectUrl);
-				} else if (!loggedIn && !checkAuthRoutes(currentRoute.split("?")[0]) && !checkPublicRoutes(currentRoute.split("?")[0])) {
-					let redirectUrl = currentRoute;
-					if(redirectUrl.indexOf("login") != -1 || redirectUrl.indexOf("logout") != -1) {
-						/* redirectUrl = "/";
-						router.push(`/login/?redirect=${redirectUrl}`); */
-					}else {
-						router.push(`/login/?redirect=${redirectUrl}`);
-					}
-					
-				} else {
-					setLoaded(true);
-				}
-			}
-		}
-	}, [loading, currentRoute]);
 
 	useEffect(() => {
 		onRouteChange(router.route);
@@ -188,7 +133,8 @@ export function UserProvider(props) {
 
 
 	return <UserContext.Provider
-		value={{login, logout, addToCart, changeCart, editProfile, updateUser, cartLength, updateQuery, query, changeQuery, update, removeFromCart, clearCart, cart, profileEditedData, userCategories , categories, user,userType, token, loggedIn, loaded }}
+		value={{login, logout, addToCart, changeCart, editProfile, updateUser, cartLength, updateQuery, query, changeQuery, update, removeFromCart, clearCart, cart, profileEditedData, userCategories , categories, user,userType, token, loggedIn, loaded,adOptions
+			,setAdOptions }}
 	>
 		{loaded ? props.children : <Layout>
 			<Loader />
