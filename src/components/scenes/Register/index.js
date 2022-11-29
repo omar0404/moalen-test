@@ -20,21 +20,21 @@ const regular_emails = ["@hotmail", "@gmail", "@outlook", "@yahoo"];
 
 import { Container, Grid, LinkLine, Links, Title, StyledIcon } from './styles';
 
-export default function Register() {
+export default function Register(props) {
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const router = useRouter()
 	const [loading, setLoading] = useState(true);
 	const [companyFields, setCompanyFields] = useState([]);
 	const [sent, setSent] = useState(false);
 	const [defaultValue, setDefaultValue] = useState({});
-	const [modal,setModal] = useState(false);
-	const [modalVal,setModalVal] = useState([]);
-	const [modalTitle,setModalTitle] = useState([]);
+	const [modal, setModal] = useState(false);
+	const [modalVal, setModalVal] = useState([]);
+	const [modalTitle, setModalTitle] = useState([]);
 
 	const companyRules = [
-		{key: 'mainScript' , title: 'بمجرد تسجيلك انت توافق علي '},
-		{key: 'companyPolices' , title: ' سيايه الخصوصيه'},
-		{key: 'usabilityRoles' , title: '  شروط الاستخدام '}
+		{ key: 'mainScript', title: 'بمجرد تسجيلك انت توافق علي ' },
+		{ key: 'companyPolices', title: ' سيايه الخصوصيه' },
+		{ key: 'usabilityRoles', title: '  شروط الاستخدام ' }
 	]
 
 	useEffect(() => {
@@ -42,14 +42,14 @@ export default function Register() {
 	}, []);
 
 	useEffect(() => {
-	// 	import('react-snapchat-pixel')
-	// 	.then((x) => x.default)
-	// 	.then((ReactPixel) => {
-	// 	ReactPixel.init('init', 'deb57985-3e44-4f32-9ed5-78d81bb859f7');			
-	// 	//ReactPixel.pageView(); 					// For tracking page view
-	// 	ReactPixel.track('PAGE_VIEW')
-	// })
-	},[])
+		// 	import('react-snapchat-pixel')
+		// 	.then((x) => x.default)
+		// 	.then((ReactPixel) => {
+		// 	ReactPixel.init('init', 'deb57985-3e44-4f32-9ed5-78d81bb859f7');			
+		// 	//ReactPixel.pageView(); 					// For tracking page view
+		// 	ReactPixel.track('PAGE_VIEW')
+		// })
+	}, [])
 
 	const init = async () => {
 		let res = await api.get("/fields");
@@ -66,8 +66,9 @@ export default function Register() {
 		ReactPixel.pageView(); 					// For tracking page view
 		ReactPixel.track( 'track', 'PAGE_VIEW') 
 	} */
-
 	const submit = async (values) => {
+
+
 		if (values.password != values.password_confirmation) {
 			enqueueSnackbar('تأكيد كلمة المرور لا يتطابق مع كلمة المرور.', {
 				variant: 'error',
@@ -96,7 +97,11 @@ export default function Register() {
 			if (!res.data.error) {
 				setSent(true);
 				setTimeout(() => {
-					router.push("/login");
+					router.push({
+						pathname: '/login',
+						query: props.query
+					}, '/login')
+
 				}, 800);
 				//SetUserReporting(values.email);
 			} else {
@@ -135,17 +140,17 @@ export default function Register() {
 	}
 
 	const modalHandling = (value) => {
-		if(value.key !== 'mainScript') {
+		if (value.key !== 'mainScript') {
 			setModalVal(configs[value.key])
 			setModal(true);
 			setModalTitle(value.title)
-		}	 
+		}
 	}
-	const updateShow= (status)=> {
+	const updateShow = (status) => {
 		setModal(status)
 	}
-	if(modal) {
-		return <ModalCompoent type={"register"} children={modalVal} show={modal} title={modalTitle} updateShow={updateShow}></ModalCompoent> 
+	if (modal) {
+		return <ModalCompoent type={"register"} children={modalVal} show={modal} title={modalTitle} updateShow={updateShow}></ModalCompoent>
 	}
 
 	return <Layout
@@ -158,9 +163,9 @@ export default function Register() {
 		<Form
 			defaultValue={defaultValue}
 			fields={fields(companyFields)}
-			companyPolices ={companyRules}
+			companyPolices={companyRules}
 			submit={submit}
-			onChangeHandling = {onChangeHandling}
+			onChangeHandling={onChangeHandling}
 			openModal={modalHandling}
 			submitLabel={"تسجيل"}
 			title={""}
