@@ -63,10 +63,14 @@ export default function Layout(props) {
 						</Link>
 					))}
 				</SideMenuList>
-				{user.loggedIn && <SideMenuButton onClick={() => { user.logout() }} background={"#f0544b"}>
-					<div><BiLogOut /></div>
+				<SideMenuButton onClick={() => { user.logout() }} background={"#f0544b"}>
+				{user.loggedIn && 
+				<>
+				<div><BiLogOut /></div>
 					<span>الخروج</span>
-				</SideMenuButton>}
+				</>
+					}
+				</SideMenuButton>
 			</SideMenu>
 			<Content>
 				<Header isInfluncer={props.isInfluncer} />
