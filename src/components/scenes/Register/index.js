@@ -30,7 +30,7 @@ export default function Register(props) {
 	const [modal, setModal] = useState(false);
 	const [modalVal, setModalVal] = useState([]);
 	const [modalTitle, setModalTitle] = useState([]);
-
+	const routerQuery = router.query
 	const companyRules = [
 		{ key: 'mainScript', title: 'بمجرد تسجيلك انت توافق علي ' },
 		{ key: 'companyPolices', title: ' سيايه الخصوصيه' },
@@ -99,7 +99,7 @@ export default function Register(props) {
 				setTimeout(() => {
 					router.push({
 						pathname: '/login',
-						query: props.query
+						query: routerQuery
 					}, '/login')
 
 				}, 800);
