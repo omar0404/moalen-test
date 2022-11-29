@@ -83,10 +83,10 @@ export default function Header(props) {
 						</MobileMenuLink>
 					</Link>
 				))}
-				<MobileMenuLink onClick={() => { setOpen(false); user.logout() }}>
+				{user.loggedIn && <MobileMenuLink onClick={() => { setOpen(false); user.logout() }}>
 					<BiLogOut />
 					الخروج
-				</MobileMenuLink>
+				</MobileMenuLink>}
 			</MobileMenuPanel>
 		</MobileMenu>
 		<Link href="/account">

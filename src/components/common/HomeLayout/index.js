@@ -59,18 +59,10 @@ export default function Layout(props) {
 						</MobileMenuLink>
 					</Link>
 				))}
-				{user.loggedIn && <MobileMenuLink onClick={() => { setOpen(false); user.logout() }}>
-					<BiLogOut />
-					الخروج
-				</MobileMenuLink>}
-				{!user.loggedIn && <MobileMenuLink href="/login">
-					<BiLogIn />
-					الدخول
-				</MobileMenuLink>}
 			</MobileMenuPanel>
 		</MobileMenu>   
 				<Header>
-					<LogoBox>
+					<LogoBox href='/'>
 						<Logo width={140} />
 					</LogoBox>
 					<Link href="/"><IconLogo /></Link>
@@ -80,8 +72,6 @@ export default function Layout(props) {
 						<MenuItem href="/register_influencer">انضم كمؤثر</MenuItem>
 						<MenuItem href="/contact">تواصل معنا</MenuItem>
 					</MenuSection>
-					{user.loggedIn &&<SignInButton onClick={() => { user.logout() }}>الخروج</SignInButton>}
-					{!user.loggedIn &&<SignInButton href="/login">الدخول</SignInButton>}
 				</Header>
 			</Content>
 			{props.children}

@@ -149,7 +149,7 @@ export default function Register() {
 	}
 
 	return <Layout
-		title={"حساب علامة تجارية أو شركة جديد"}
+		title={"انضم كمعلن"}
 		mainLink={{
 			label: "انضم معنا كمؤثر في اكبر منصه للتسويق عبر المؤثرين سجل الان",
 			link: "/register_influencer"
@@ -163,7 +163,7 @@ export default function Register() {
 			onChangeHandling = {onChangeHandling}
 			openModal={modalHandling}
 			submitLabel={"تسجيل"}
-			title={"حساب علامة تجارية أو شركة جديد"}
+			title={""}
 		/>
 		<Links>
 			<LinkLine>

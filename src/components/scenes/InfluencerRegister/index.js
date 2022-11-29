@@ -142,7 +142,7 @@ export default function InfluencerRegister() {
 	}
 
 	return <Layout
-	title={"التسجيل كمؤثر في مواقع التواصل"}
+	title={"انضم كمؤثر"}
 	mainLink={{
 		label: "سجل كعلامة تجارية او وكالة",
 		link: "/register"

@@ -303,7 +303,7 @@ export default function Flow() {
 		}
 	};
 
-	return <Layout title={"الرئيسية"} backLink={"/"}>
+	return <Layout title={data.name} backLink={"/"}>
 		<Container>
 			<Cover cover={getImage(data.cover)}>
 				<Details>

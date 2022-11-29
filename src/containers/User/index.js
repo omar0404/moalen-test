@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 import Layout from '../../components/common/BasicLayout'
 import Loader from '../../components/common/Loader'
-const ProtectedRoutes = ["account"]
+const ProtectedRoutes = ["account","orders","cart","profileEdit","accept_offer"]
 export function UserProvider(props) {
 	const router = useRouter()
 	const [user, setUser] = useState({});

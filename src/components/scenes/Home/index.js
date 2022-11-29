@@ -22,7 +22,7 @@ export default function Flow() {
 
 	};
 
-	return <Layout title={"الرئيسية"} backLink={"/"}>
+	return <Layout title={"عن معلن"} backLink={"/"}>
 		<Section grey={true}>
 			{/* <Shape1 /> */}
 			<SectionContent>

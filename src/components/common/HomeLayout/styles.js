@@ -153,7 +153,10 @@ export const SignInButton = styled.a`
 		display: block;
 	}
 `
-export const LogoBox = styled.div`
+export const LogoBox = styled.a`
+ 	 background-color:transparent;
+ 	 border:none ;
+     cursor: pointer;
 	@media only screen and (max-width: 667px) {
 		display: none;
 	}
