@@ -141,9 +141,8 @@ export default function Flow() {
 		<Links>
 			<LinkLine>
 				ليس لديك حساب علامة تجارية؟ <Link
-
-					url={router?.query?.from ? { pathname: router.query.from, query: router.query } : null}
-					href="/register">سجل حساب جديد</Link>
+					as={"/register"}
+					href={{ pathname: "/register", query: router.query, }}>سجل حساب جديد</Link>
 			</LinkLine>
 			<LinkLine>
 				نسيت كلمة المرور؟ <Link href="/reset_password">تغيير كلمة المرور</Link>
