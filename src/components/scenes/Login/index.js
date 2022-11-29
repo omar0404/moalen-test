@@ -27,7 +27,7 @@ export default function Flow() {
 	const router = useRouter()
 	const [loading, setLoading] = useState(false);
 	const user = useContext(UserContext);
-	
+
 	useEffect(() => {
 		init();
 	}, []);
@@ -75,19 +75,21 @@ export default function Flow() {
 		<!-- End Snap Pixel Code -->
 	 */
 
-		
+
 
 	const submit = async (values) => {
 		setLoading(true);
 		try {
 			let res = await api.post("/login", values);
-			if(!res.data.error) {
-				user.login(res.data.data);	
+			if (!res.data.error) {
+				user.login(res.data.data);
 				if (router.query && router.query.from) {
-					router.push({pathname:router.query.from,query:router.query},router.query.from);
-	 			}			
+					router.push({ pathname: router.query.from, query: router.query }, router.query.from);
+				} else {
+					router.push('./')
+				}
 			} else {
-				if(!!res.data.message) {
+				if (!!res.data.message) {
 					enqueueSnackbar(res.data.message, {
 						variant: 'error',
 					});
@@ -99,7 +101,7 @@ export default function Flow() {
 				setLoading(false);
 			}
 		} catch (err) {
-			if(!!err.message) {
+			if (!!err.message) {
 				enqueueSnackbar(err.message, {
 					variant: 'error',
 				});
@@ -119,26 +121,29 @@ export default function Flow() {
 			</Container>
 		</Layout>
 	}
-
-	const onChangeHandling = () => {}
+	console.log("login-router", router.query.from)
+	const onChangeHandling = () => { }
 	return <Layout
-	title={"تسجيل الدخول"}
-	backLink={"/"}
-	mainLink={{
-		label: "انضم معنا كمؤثر في اكبر منصه للتسويق عبر المؤثرين سجل الان",
-		link: "/register_influencer"
-	}}
+		title={"تسجيل الدخول"}
+		backLink={"/"}
+		mainLink={{
+			label: "انضم معنا كمؤثر في اكبر منصه للتسويق عبر المؤثرين سجل الان",
+			link: "/register_influencer"
+		}}
 	>
 		<Form
 			fields={fields}
 			submit={submit}
 			submitLabel={"تسجيل الدخول"}
 			title={"تسجيل الدخول "}
-			onChangeHandling = {onChangeHandling}
+			onChangeHandling={onChangeHandling}
 		/>
 		<Links>
-		<LinkLine>
-				ليس لديك حساب علامة تجارية؟ <Link href="/register">سجل حساب جديد</Link>
+			<LinkLine>
+				ليس لديك حساب علامة تجارية؟ <Link
+
+					url={router?.query?.from ? { pathname: router.query.from, query: router.query } : null}
+					href="/register">سجل حساب جديد</Link>
 			</LinkLine>
 			<LinkLine>
 				نسيت كلمة المرور؟ <Link href="/reset_password">تغيير كلمة المرور</Link>
