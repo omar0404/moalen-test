@@ -27,6 +27,7 @@ import { Container, Grid, Card, GraphCard, GraphPercentage, ImageCard, GalleryRo
 import AddToCartModal from '../../common/AddToCartModal';
 import useAddToCartModal from '../../../hooks/useAddToCartModal';
 
+
 const COLORS = ["#ff5f5f", "#5fafff", "#a95fff", "#ff5f8a", "#49d39e"];
 
 const PLATFORM_ICONS = {
@@ -328,8 +329,10 @@ export default function Flow() {
 								<Tag
 									key={`${data.name}-tag-${i}`}
 									background={COLORS[i % COLORS.length]}
+									onClick={() => router.push({pathname:'/tag',query:{tag_name:tag.name,tag_id:tag.id}})}
+									
 								>{tag.name}</Tag>
-							))}
+								))}
 						</Tags>
 					</TitleDetails>
 					<PlatformsCount>{followersText}</PlatformsCount>
