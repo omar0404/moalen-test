@@ -42,7 +42,7 @@ const useAddToCartModal = (data) => {
 		let savedData = JSON.parse(JSON.stringify(data));
 		savedData.adOptions = adOptions;
 		let itemData = savedData.adOptions.filter(i => i.active).map(item => ({
-			publish_date: fixNum(moment(item.publish_date).format("YYYY-MM-Do")),
+			publish_date: fixNum(moment(item.publish_date).format("YYYY-MM-DD")),
 			ads_types: [item.ads_types],
 			platform_id: item.platform_id
 		}));
