@@ -120,13 +120,12 @@ export const FilterOpen = styled.div`
 
 
 export const FilterClose = styled.div`
-	position: absolute;
-	top: 8px;
-	right: 8px;
 	cursor: pointer;
 	svg {
-		color: #edbb42;
+		color:#edbb42;
 		font-size: 24px
 	}
 	pointer-events: all !important;
+	margin-top:15px;
+	margin-right:10px;
 `
