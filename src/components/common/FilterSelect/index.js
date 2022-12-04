@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{forwardRef} from 'react';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import {FaCaretDown } from "react-icons/fa";
 import Select from 'react-select';
@@ -53,14 +53,15 @@ const colourStyles = {
   }),
 };
 
-export default function SelectComponent(props) {
+export default  forwardRef((props,ref) => {
     return <Container>
         <Label>{props.label}</Label>
         <Select
+        ref={ref}
         defaultValue={props.value}
         isMulti={props.isMultiple}
         options={props.options}
-        onChange={props.onChange}
+        onChange={e => e ? props.onChange(e) : null}
         styles={colourStyles}
         placeholder={props.options[0]?.label}
         isSearchable={false}
@@ -73,4 +74,4 @@ export default function SelectComponent(props) {
         <FaCaretDown />
         {!!props.error && <Error>{props.error}</Error>}
     </Container>
-};
+});

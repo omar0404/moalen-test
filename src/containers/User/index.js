@@ -57,6 +57,7 @@ export function UserProvider(props) {
 		await getSavedUser()
 		await getSavedCart()
 		setLoaded(true)
+	
 	}
 
 
@@ -103,9 +104,7 @@ export function UserProvider(props) {
 	};
 
 	const changeQuery = (q) => {
-		setQuery(q);
-		setUpdate(c => c + 1);
-		setUpdateQuery(c => c + 1)
+		setQuery({...q});
 	};
 
 	const changeCart = (newCart) => {
