@@ -1,3 +1,4 @@
+import React,{ useEffect, useState }  from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -5,14 +6,25 @@ import appConfig from '../../src/configs/app';
 import Layout from '../../src/components/common/Layout'
 import InfluencersCards from '../../src/components/common/InfluencersCards';
 
-const TagPage = ({ influencers: {ifluencers} }) => {
+const TagPage = () => {
 
-const router = useRouter();
-const {tag_name} = router.query;
+  const[influencers,setInfluencers] = useState([]);
+
+  const router = useRouter();
+  const {tag_name,tag_id} = router.query;
+
+  useEffect(() => {
+		init();
+	}, []);
+
+	const init = async () => {
+    const res = await axios.get(`${appConfig.apiURI}/influencers?tag_id=${tag_id}`);
+    setInfluencers(res.data.data.ifluencers)
+	};
 
 return (
     <Layout title={tag_name} >
-      <InfluencersCards influencersList={ifluencers}/>
+      <InfluencersCards influencersList={influencers}/>
 		</Layout>
 
   );
@@ -20,11 +32,3 @@ return (
 
 export default TagPage;
 
-export async function getServerSideProps({ query: { tag_id } }) {
-         const res = await axios.get(`${appConfig.apiURI}/influencers?tag_id=${tag_id}`);
-         return {
-           props: { influencers: res.data.data
-           },
-         };
-   
- }
