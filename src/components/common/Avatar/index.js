@@ -4,7 +4,7 @@ import { FaUpload } from "react-icons/fa";
 import Image from 'next/image';
 import configs from '../../../configs';
 
-import getImage from '../../../utils/getImage';
+import {myLoader} from '../../../utils/loader';
 
 import { Container, Input, Label, Error, LabelContainer, FileName, Img, InputContainer , ImageBox } from './styles';
 
@@ -63,16 +63,14 @@ export default function Avatar(props) {
 		  }
 	}
 
-	const myLoader = ({ src, width, quality }) => {
-        return `${src}?w=${width}&q=${quality || 75}`
-      }
+	
 
 	return <Container>
 		<InputContainer>
 		<Label> الصوره الشخصيه</Label>
 			<LabelContainer noBorder={props.noBorder}>
             <ImageBox>
-                {img &&<Image className='avatarImg' src={img} alt={fileName} loader={myLoader} layout='responsive' width={210} height={210} />}
+                {img &&<Image className='avatarImg' src={img} alt={fileName} loader={myLoader} layout='responsive' width={52} height={52} />}
             </ImageBox>
 			<Input {...props} placeholder={props.label ? props.label : ''} type="file" onChange={onChange} style={props.style} />
 			{loading ?

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import configs from '../../../configs'
+import configs from '../../../configs';
+import Image from 'next/image';
 
 export const Container = styled.div`
     padding: 32px 24px 16px;
@@ -78,14 +79,13 @@ export const HeaderContent = styled.div`
 	cursor: pointer;
 `
 
-export const Avatar = styled.div`
+export const Avatar = styled(Image)`
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
 	background-color: #eee;
 	background-position: center center;
 	background-size: cover;
-	background-image: url(${props => props.background});
 `
 
 export const InfluencerName = styled.div`

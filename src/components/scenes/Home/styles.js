@@ -81,7 +81,6 @@ export const SectionImage = styled.div`
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    background-image: url(${props => props.background});
     height: 220px;
     @media only screen and (max-width: 667px) {
         display: block;
@@ -109,16 +108,6 @@ export const SectionSubTitle = styled.div`
 	font-size: 14px;
 	line-height: 20px;
 	margin: 0 0 24px;
-`
-
-export const ActionButton = styled.a`
-	padding: 2px 16px 8px;
-	border-radius: 4px;
-	font-size: 14px;
-	color: white;
-	background-color: #0e256b;
-    margin: 0 0 8px;
-    min-width: 120px
 `
 
 export const Shape1 = styled.div`
@@ -205,11 +194,13 @@ export const VideoPlay = styled.div`
     width: 300px;
 `
 
-export const ClickToPlay = styled.a`
+export const ClickToPlay = styled.button`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    border:none;
+    background:transparent ;
 
     svg {
         color: #edbb42;

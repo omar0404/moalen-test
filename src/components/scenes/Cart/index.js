@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router'
-
 import { FiCheck, FiCheckCircle } from "react-icons/fi";
 import { FaYoutube, FaLink, FaSnapchatGhost, FaFacebookF, FaTwitter, FaInstagram, FaTiktok, FaTimes } from "react-icons/fa";
 import moment from 'moment/min/moment-with-locales'
@@ -10,7 +9,7 @@ moment.locale('ar-sa');
 import * as api from '../../../utils/api';
 import timeoutPromise from '../../../utils/timeoutPromise'
 import getImage from '../../../utils/getImage';
-
+import {myLoader} from '../../../utils/loader';
 import { UserContext, } from '../../../containers/User'
 
 import Layout from '../../common/Layout'
@@ -40,7 +39,7 @@ const PLATFORM_NAMES = {
 	facebook: "فيسبوك"
 };
 
-export default function Cart() {
+export default function Cart() {    
 	const user = useContext(UserContext);
 	const [sent, setSent] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -195,7 +194,7 @@ export default function Cart() {
 									return <Collapse
 										key={'cart-item' + i + key}
 										head={<HeaderContent>
-											<Avatar background={getImage(influencer.avatar)} />
+										 <Avatar src={getImage(influencer.avatar)} alt={"influencer-avatar"} loader={myLoader} width={40} height={40}/>
 											<InfluencerName>{influencer.name}</InfluencerName>
 											<InfluencerPlatform>
 												{influencer.adOptions.filter(i => i.active).map(platform => (

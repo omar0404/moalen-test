@@ -104,7 +104,7 @@ export const Tags = styled.div`
         display: none;
 	}
 `
-export const Tag = styled.a`
+export const Tag = styled.div`
 	display: inline-flex;
 	font-size: 12px;
 	padding: 0px 8px;

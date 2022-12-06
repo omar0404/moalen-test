@@ -1,19 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useSnackbar } from 'notistack';
-import { useRouter } from 'next/router'
-import { FaPlayCircle, FaShieldAlt, FaGem, FaClipboardCheck, FaUsers } from "react-icons/fa";
+import React, {  useEffect } from 'react';
+import { FaShieldAlt, FaGem, FaClipboardCheck, FaUsers } from "react-icons/fa";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 
 import Layout from '../../common/HomeLayout'
-import Table from '../../common/Table'
 
-import { Container, Section, SectionContent,SectionContent2, FeaturesList, Feature, SectionTitle, SectionTitle2, VideoPlay, SectionImage, ClickToPlay, VideoSquare2, VideoSquare, Shape1, Shape2, Shape3, SectionActions, SectionSubTitle, ActionButton, FooterContent, Footer } from './styles';
-import { Featured } from '../../common/Table/styles';
+import { Section, SectionContent,SectionContent2, FeaturesList, Feature, SectionTitle, SectionTitle2, VideoPlay, SectionImage, ClickToPlay, VideoSquare2, VideoSquare, Shape1, Shape2, Shape3, SectionActions, SectionSubTitle, Footer } from './styles';
+import Image from 'next/image';
+import { myLoader } from '../../../utils/loader';
 
 export default function Flow() {
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-	const router = useRouter()
-
 	useEffect(() => {
 		init();
 	}, []);
@@ -36,7 +31,9 @@ export default function Flow() {
 لكن ما لنا بالمشاكل.. علينا بالحلول !
 					</SectionSubTitle>
 				</SectionActions>
-				<SectionImage background={'/assets/images/home-icon.png'} />
+				<SectionImage>
+					<Image src={'/assets/images/home-icon.png'} alt={'about-image'} loader={myLoader} width={220} height={220}/>
+					</SectionImage>
 			</SectionContent>
 		</Section>
 		<Section >
@@ -92,7 +89,9 @@ export default function Flow() {
 
 					</SectionSubTitle>
 				</SectionActions>
-				<SectionImage background={'/assets/images/home-flag.png'} />
+				<SectionImage>
+				<Image src={'/assets/images/home-flag.png'} alt={'home-flag'} loader={myLoader} height={220} width={220}/>
+			</SectionImage>
 			</SectionContent>
 		</Section>
 		<Section >
