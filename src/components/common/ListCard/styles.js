@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 
-import configs from '../../../configs'
+import configs from '../../../configs';
 
 export const Card = styled.div`
 	border-radius: 24px;
@@ -38,7 +39,7 @@ export const CardContent = styled.div`
 	justify-content: space-between;
 `
 
-export const CardAvatar = styled.div`
+export const CardAvatar = styled(Image)`
 	width: 52px;
 	height: 52px;
 	min-width: 52px;
@@ -46,7 +47,6 @@ export const CardAvatar = styled.div`
 	background-color: #eee;
 	background-position: center center;
 	background-size: cover;
-	background-image: url(${props => props.background});
 `
 
 export const CardHeader = styled.div`

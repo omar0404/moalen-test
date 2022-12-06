@@ -6,6 +6,7 @@ import { useRouter} from 'next/router';
 import * as api from '../../../utils/api';
 import getImage from '../../../utils/getImage';
 
+import Image from 'next/image';
 import { FaPlus, FaCheck, FaYoutube, FaSnapchatGhost, FaFacebookF, FaTwitter, FaInstagram, FaTiktok ,FaEllipsisH } from "react-icons/fa";
 
 import AddToCartModal from '../AddToCartModal'
@@ -16,7 +17,10 @@ import { UserContext, } from '../../../containers/User';
 import { useSnackbar } from 'notistack';
 
 
-import { StyledTag ,Card, ModalTitle, Row, ModalContent, CardContent, SectionRow, ModalStyledIcon, CardHeader, AddContainerPress, ProgressText, AddContainer, ProgressContainer, Progress, CardAvatar, CardDesc, Tags, Tag, Platforms, StyledIcon, PlatformsCount ,ModalButtons} from './styles';
+import { StyledTag ,Card,CardContent,  CardHeader, 
+	AddContainerPress, ProgressText, AddContainer, 
+	ProgressContainer, Progress, CardAvatar, 
+	CardDesc, Tags, Tag, Platforms, StyledIcon, PlatformsCount } from './styles';
 
 const COLORS = ["#ff5f5f", "#5fafff", "#a95fff", "#ff5f8a", "#49d39e"];
 
@@ -44,6 +48,8 @@ export default function ListCard(props) {
 		if (!!props.data)
 			init();
 	}, [props.data]);
+	
+
 
 	const init = async () => {
 		setLoading(true);
@@ -73,6 +79,7 @@ export default function ListCard(props) {
 		} else {
 			setFollowersText(total);
 		}
+
 		setAdOptions(adOptions);
 		setLoading(false);
 	};
@@ -87,13 +94,14 @@ export default function ListCard(props) {
 		e.stopPropagation();
 		addCart()
 	}
-
+	const myLoader = ({ src, width, quality }) => {
+		return `${src}?w=${width}&q=${quality || 75}`
+	   }
 
 	if (loading) {
 		return <Card>
 			<CardContent>
 				<CardHeader>
-					<CardAvatar />
 					<div className="title">
 						<strong> </strong>
 						<span> </span>
@@ -121,7 +129,12 @@ export default function ListCard(props) {
 			<Link href={`/influencer/${data.id}`}>
 				<CardContent>
 					<CardHeader>
-						<CardAvatar background={getImage(data.avatar)} />
+						<CardAvatar 
+						   loader={myLoader} 
+						   alt="influencer-avatar"
+      					   width={52}
+     					   height={52} 
+						   src={getImage(data.avatar)} />
 						<div className="title">
 							<strong>{data.name}</strong>
 							<span>{data.specialization}</span>

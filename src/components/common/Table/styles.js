@@ -123,7 +123,7 @@ export const PageButton = styled.div`
 
 `
 
-export const PageOption = styled.a`
+export const PageOption = styled.div`
 	font-family: 'MediumFont';
 	color: ${configs.colors.primary};
 	font-size: 14px;

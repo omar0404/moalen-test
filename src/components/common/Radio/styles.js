@@ -47,7 +47,7 @@ export const SelectContainer = styled.div`
     }
 `
 
-export const SelectTag = styled.a`
+export const SelectTag = styled.div`
     font-size: 12px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;

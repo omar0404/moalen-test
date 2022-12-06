@@ -88,7 +88,7 @@ export const MobileMenuClose = styled.div`
 	pointer-events: all !important;
 `
 
-export const MobileMenuLink = styled.a`
+export const MobileMenuLink = styled.div`
 	cursor: pointer;
 	font-size: 16px;
 	color: ${configs.colors.primary};
