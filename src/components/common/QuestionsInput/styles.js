@@ -120,15 +120,6 @@ export const AnswerAddButton = styled.a`
     cursor: pointer;
 `
 
-export const RadioButton = styled.a`
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
-    svg {
-        font-size: 20px;
-        margin: 0 4px 0 0;
-    }
-    cursor: pointer;
-`
 
 export const ActionsContainer = styled.div`
     box-sizing: border-box;
@@ -143,29 +134,5 @@ export const ActionsContainer = styled.div`
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-    }
-`
-
-export const TypesContainer = styled.div`
-    font-size: 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    a {
-        font-size: 12px;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        margin: 0 4px 0 8px;
-    }
-    svg {
-        font-size: 16px;
-    }
-    .typeLabel {
-        font-size: 12px;
-        color: rgba(0, 0, 0, 0.6);
-        margin: 0 8px 0 0;
     }
 `

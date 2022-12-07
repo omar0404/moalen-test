@@ -1,17 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
-import { MdHome } from "react-icons/md";
-import { BiHome, BiListUl, BiMailSend, BiLogOut ,BiLogIn ,BiUserVoice ,BiUserPin} from "react-icons/bi";
+import { BiHome, BiMailSend ,BiUserVoice ,BiUserPin} from "react-icons/bi";
 
 import Head from '../Head';
-import Footer from '../Footer';
 import Logo from '../Logo'
 
 import { UserContext, } from '../../../containers/User'
-import { BsSliders, BsX, BsList } from "react-icons/bs";
+import { BsX, BsList } from "react-icons/bs";
 
-import { LogoBox ,IconLogo,Container, Content, Header, MenuSection, MenuItem, SignInButton ,MobileMenuLink, MobileMenuClose, MobileMenuPanel, MobileMenuOpen, MobileMenu, } from './styles';
-import configs from '../../../configs';
+import { LogoBox ,IconLogo,Container, Content, Header, MenuSection, MenuItem ,MobileMenuLink, MobileMenuClose, MobileMenuPanel, MobileMenuOpen, MobileMenu, } from './styles';
 
 export default function Layout(props) {
 	const user = useContext(UserContext);

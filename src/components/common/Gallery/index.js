@@ -1,12 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { RiFileUploadLine, RiLoader2Line, RiCheckLine } from "react-icons/ri";
+import React, { useEffect, useState } from 'react'
+import {RiLoader2Line, RiCheckLine } from "react-icons/ri";
 import { FaUpload } from "react-icons/fa";
 import Image from 'next/image';
-import configs from '../../../configs'
 
-import getImage from '../../../utils/getImage';
-
-import { Container, Input, Label, Error, LabelContainer, FileName, Img, InputContainer ,GalleryContainer,ContainerBox , ImageBox} from './styles';
+import { Container, Input, Label, Error, LabelContainer, FileName, InputContainer ,GalleryContainer,ContainerBox , ImageBox} from './styles';
 
 
 export default function Gallery(props) {
@@ -22,7 +19,6 @@ export default function Gallery(props) {
 	const [img, setImg] = useState("");
 	const [imgArr, setImgArr] = useState(props.imgVals || imgs);
     const [value, setValue] = useState(props.imgVals || []);
-	const [successFlag, setSuccessFlag] = useState(false)
 
 	useEffect(() => {
 		let imgs = [... imgArr];
@@ -45,32 +41,6 @@ export default function Gallery(props) {
 		};
     }, []);
 
-	// const convertImgToFile = async (imgUrl) => {	
-	// 	// const response = await fetch(imgUrl);
-	// 	// const blob = await response.blob();
-	// 	// const file = new File([blob], "صوره" + imgExt, {
-	// 	//   type: blob.type,
-	// 	// });
-
-	// 	//console.log('imgUrl',imgUrl);
-
-	// 	fetch(imgUrl)
-	// 	.then(async response => {
-	// 		//console.log('hhhh')
-	// 		const contentType = response.headers.get('content-type')
-	// 		const blob = await response.blob()
-	// 		const file = new File([blob], 'img', { contentType });
-	// 		setSuccessFlag(true)
-	// 		// access file here
-	// 		//return new File([blob], 'img', { contentType })
-
-
-	// 	}).catch(e => {
-	// 		console.log('e',e);
-	// 		setSuccessFlag(false)
-	// 	})
-	
-	// }
 	const getImageType = (file ,index) => {
 		//convertFileToImg(file ,index);
 		if(typeof(file) == 'object' ) 

@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { MdRadioButtonChecked, MdRadioButtonUnchecked, MdClose } from "react-icons/md";
-import { BsX } from "react-icons/bs";
+import React from 'react';
+import {MdClose} from "react-icons/md";
 import { Animated } from "react-animated-css";
 import TermCard from '../../common/TermCard';
 import moment from 'moment/min/moment-with-locales';
 moment.locale('ar-sa');
 
-import { Container, StyledAnimated, Card, CloseButton, Overlay ,Title ,ModalContent, MainBox,ItemsBox} from './styles';
+import { Container, StyledAnimated, Card, CloseButton, Overlay ,Title, MainBox} from './styles';
 
 export default function ModalCompoent(props) {
     const setShow = (val) => {

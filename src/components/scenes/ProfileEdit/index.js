@@ -19,8 +19,7 @@ import fields from './fields';
 
 export default function ProfileEdit() {
     const router = useRouter();
-    const userId =  router.query.id;
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 	const [loading, setLoading] = useState(true);
     const [sent, setSent] = useState(false);
     const [message, setMessage] = useState('');
@@ -28,7 +27,6 @@ export default function ProfileEdit() {
 	const [regions, setRegions] = useState([]);
 	const [tags, setTags] = useState([]);
 	const [categories, setCategories] = useState([]);
-	const [requiredFields, setFields] = useState({});
 	const {user, userType} = useContext(UserContext);
 
 	useEffect(() => {

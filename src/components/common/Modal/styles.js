@@ -77,35 +77,6 @@ export const MainBox = styled.div`
         height: calc(100vh - 50px);
     }
 `
-export const ModalContent = styled.div`
-    
-    h5 , p {
-        margin : 2px 0;
-    }
-    h4 {
-        margin : 4px 0 4px 12px;
-        background-color : #eeeef2;
-        padding: 2px 10px 6px;
-    }
-    h5{
-        font-weifgt: bold:
-        margin-left: 5px;
-    }
-    p{
-        font-size: 12px;
-    }
-`
-export const ItemsBox = styled.div`
-    p{
-        font-weifgt: bold:
-        display: inline-block;
-        margin-left: 5px;
-    }
-    span{
-        font-size: 12px;
-        display: inline-block;
-    }
-`
 export const Title = styled.div`
     color: ${configs.colors.primary};
     font-size: 20px;

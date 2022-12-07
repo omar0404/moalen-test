@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
-import { MdHome } from "react-icons/md";
 import { BiHome, BiListUl, BiMailSend, BiLogOut, BiInfoCircle } from "react-icons/bi";
 
 import Head from '../Head';
@@ -10,8 +9,7 @@ import Logo from '../LogoIcon'
 
 import { UserContext, } from '../../../containers/User'
 
-import { Container, Content, SideMenu, ContentUpperContainer, SideMenuList, ContentContainer, SideMenuButton, FooterContainer } from './styles';
-import configs from '../../../configs';
+import { Container, Content, SideMenu, ContentUpperContainer, SideMenuList, ContentContainer, SideMenuButton } from './styles';
 
 export default function Layout(props) {
 	const [open, setOpen] = useState(true);

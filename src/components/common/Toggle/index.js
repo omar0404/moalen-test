@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Input, Label, Error, ToggleContainer, Toggle } from './styles';
+import { Container, Label, Error, ToggleContainer, Toggle } from './styles';
 
 export default function ToggleComponent(props) {
     const [value, setValue] = useState(!!props.value);

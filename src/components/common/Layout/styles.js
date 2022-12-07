@@ -113,9 +113,3 @@ export const SideMenuButton = styled.div`
 		text-align: center;
 	}
 `
-
-export const FooterContainer = styled.div`
-	position: absolute;
-	bottom: 16px;
-	left: 0;
-`

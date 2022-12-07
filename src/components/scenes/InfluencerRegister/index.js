@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router'
-import Link from 'next/link';
-import { FiCheck, FiCheckCircle } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
 import ModalCompoent from '../../common/Modal'
-import privacyPolicy from '../../../configs/privacyPolicy'
 
 import * as api from '../../../utils/api';
 
@@ -19,10 +17,10 @@ import configs from '../../../configs'
 
 
 
-import { Container, Grid, LinkLine, Links, Title, StyledIcon } from './styles';
+import { Container, Links, Title, StyledIcon } from './styles';
 
 export default function InfluencerRegister() {
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 	const [sent, setSent] = useState(false);

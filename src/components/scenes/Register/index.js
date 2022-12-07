@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
@@ -16,12 +16,10 @@ import ModalCompoent from '../../common/Modal'
 import fields from './fields';
 import configs from '../../../configs'
 
-const regular_emails = ["@hotmail", "@gmail", "@outlook", "@yahoo"];
-
-import { Container, Grid, LinkLine, Links, Title, StyledIcon } from './styles';
+import { Container, LinkLine, Links, Title, StyledIcon } from './styles';
 
 export default function Register(props) {
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 	const router = useRouter()
 	const [loading, setLoading] = useState(true);
 	const [companyFields, setCompanyFields] = useState([]);
@@ -41,56 +39,22 @@ export default function Register(props) {
 		init();
 	}, []);
 
-	useEffect(() => {
-		// 	import('react-snapchat-pixel')
-		// 	.then((x) => x.default)
-		// 	.then((ReactPixel) => {
-		// 	ReactPixel.init('init', 'deb57985-3e44-4f32-9ed5-78d81bb859f7');			
-		// 	//ReactPixel.pageView(); 					// For tracking page view
-		// 	ReactPixel.track('PAGE_VIEW')
-		// })
-	}, [])
-
 	const init = async () => {
 		let res = await api.get("/fields");
 		setCompanyFields(res.data.data);
 		setLoading(false);
 	};
-	/* const SetUserReporting = (email)=> {
-		const userIdentification = { user_email: email}; // optional
-		const options = {
-			debug: false, 		// enable logs
-		};
-		ReactPixel.init('init', userIdentification, options);
-		
-		ReactPixel.pageView(); 					// For tracking page view
-		ReactPixel.track( 'track', 'PAGE_VIEW') 
-	} */
 	const submit = async (values) => {
-
-
 		if (values.password != values.password_confirmation) {
 			enqueueSnackbar('تأكيد كلمة المرور لا يتطابق مع كلمة المرور.', {
 				variant: 'error',
 			});
 			return;
 		}
-		// let regular_email = false;
-		// regular_emails.forEach(o => {
-		// 	if (values.email.indexOf(o) != -1) {
-		// 		regular_email = true;
-		// 	}
-		// });
-		// if (regular_email) {
-		// 	enqueueSnackbar('الرجاء التسجيل ببريد إلكتروني رسمي', {
-		// 		variant: 'error',
-		// 	});
-		// 	return;
-		// }
+
 		setLoading(true);
 		//api
 		setDefaultValue(values);
-		////console.log('values',values)
 		try {
 			values.registerd_from = "web";
 			let res = await api.post("/register", values)
@@ -103,7 +67,6 @@ export default function Register(props) {
 					}, '/login')
 
 				}, 800);
-				//SetUserReporting(values.email);
 			} else {
 				setDefaultValue(values);
 				enqueueSnackbar(res.data.message, {

@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import GoogleMapReact from 'google-map-react';
-
-import colors from '../../../configs/colors'
 
 export const Container = styled.div`
     box-sizing: border-box;

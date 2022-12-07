@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, } from 'react';
-import Router, { useRouter, events, route } from 'next/router';
+import { useRouter} from 'next/router';
 import localForage from 'localforage';
 
 export const UserContext = createContext();
@@ -14,7 +14,6 @@ export function UserProvider(props) {
 	const [loaded, setLoaded] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
-	const [currentRoute, setCurrentRoute] = useState("");
 	const [token, setToken] = useState("");
 	const [cart, setCart] = useState({});
 	const [query, setQuery] = useState({});

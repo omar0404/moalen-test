@@ -1,7 +1,5 @@
 import React , {useState , useEffect} from 'react';
 import Image from 'next/image';
-import configs from '../../../configs'
-
 
 import { FaYoutube, FaSnapchatGhost, FaFacebookF, FaTwitter, FaInstagram, FaTiktok  } from "react-icons/fa";
 

@@ -1,12 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
-import configs from '../../../configs';
 import { useRouter } from 'next/router'
 
 import * as api from '../../../utils/api';
-
-import { MdPerson } from "react-icons/md";
-import { FaFileContract, FaHeart, FaCarAlt } from "react-icons/fa";
 
 import Filter from '../Filter'
 import ListCard from '../ListCard';

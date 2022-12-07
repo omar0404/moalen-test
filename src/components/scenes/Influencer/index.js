@@ -23,7 +23,7 @@ import moment from 'moment/min/moment-with-locales';
 moment.locale('ar-sa');
 
 
-import { Container, Grid, Card, GraphCard, GraphPercentage, ImageCard, GalleryRowGrid, SectionRow, AddContainer, BarGraphContainer, GraphContainer, Description, ChartIcons, GraphLabel, StyledIcon, GraphIcon, CardTitle, RowGrid2, FollowersCount, RowGrid, Row, PlatformsCount, Cover, Details, Avatar, TitleDetails, Tags, Tag, ModalRow, ModalContent, ModalStyledIcon, ModalTitle } from './styles';
+import { Container, Card, GraphCard, ImageCard, GalleryRowGrid, AddContainer, BarGraphContainer, GraphContainer, Description, ChartIcons, GraphLabel, StyledIcon, GraphIcon, CardTitle, RowGrid2, FollowersCount, RowGrid, PlatformsCount, Cover, Details, Avatar, TitleDetails, Tags, Tag } from './styles';
 import AddToCartModal from '../../common/AddToCartModal';
 import useAddToCartModal from '../../../hooks/useAddToCartModal';
 
@@ -48,18 +48,6 @@ const PLATFORM_COLORS = {
 	facebook: "#4267B2"
 };
 
-
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ payload, cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-	const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-	const x = cx + radius * Math.cos(-midAngle * RADIAN);
-	const y = cy + radius * Math.sin(-midAngle * RADIAN);
-	return (
-		<text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-			{`${(payload.percentage * 100).toFixed(0)}%`}
-		</text>
-	);
-};
 
 function hexToRgbA(hex) {
 	var c;

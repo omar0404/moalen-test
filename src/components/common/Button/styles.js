@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import colors from '../../../configs/colors'
 
-import Link from 'next/link'
-
 
 export const ButtonLink = styled.div`
     display: flex;

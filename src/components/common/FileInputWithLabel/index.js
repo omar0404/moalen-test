@@ -1,14 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { RiFileUploadLine, RiLoader2Line, RiCheckLine } from "react-icons/ri";
+import React, { useEffect, useState } from 'react'
+import {RiLoader2Line, RiCheckLine } from "react-icons/ri";
 import { FaUpload } from "react-icons/fa";
 import Image from 'next/image';
-import configs from '../../../configs'
-
-import getImage from '../../../utils/getImage';
 
 import { Container, Input, Label, Error, LabelContainer, FileName, ImageBox, InputContainer } from './styles';
-
-import { SnackbarProvider, useSnackbar } from 'notistack';
 
 const timeKey = () => {
 	var result = '';

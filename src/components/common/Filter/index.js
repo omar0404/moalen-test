@@ -1,13 +1,8 @@
 import React, { useContext, useEffect, useState, useRef, createRef } from 'react';
 import { useRouter } from 'next/router'
 
-import Link from 'next/link';
-import configs from '../../../configs';
-
 import * as api from '../../../utils/api';
-
-import { MdPerson } from "react-icons/md";
-import { BsSliders, BsEraser } from "react-icons/bs";
+import { BsSliders } from "react-icons/bs";
 import { IoIosRefresh } from "react-icons/io";
 
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import configs from '../../../configs'
-import { SketchPicker, BlockPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 
 export const Container = styled.div`
     box-sizing: border-box;

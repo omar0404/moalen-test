@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router';
-import { FiCheckCircle } from "react-icons/fi";
 import moment from 'moment/min/moment-with-locales'
 moment.locale('ar-sa');
 import fields from './fields'
@@ -10,12 +9,12 @@ import Form from '../../common/Form'
 import * as api from '../../../utils/api';
 import Layout from '../../common/Layout'
 
-import { Container , FormBox , ContactsBox,BoxItem , Content, DeleteIcon, SentContent, SentSubTitle, SentIcon, InfluencerContent, PlatformRow, PlatformRowContent, Title, SubTitle, SubTitle2, HeaderContent, InfluencerPlatform, Avatar, InfluencerName, StyledIcon } from './styles';
+import { Container , FormBox} from './styles';
 
 export default function Reject() {
 	const [formFields, setFeilds] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 	const router = useRouter();
 
 	const init = async () => {

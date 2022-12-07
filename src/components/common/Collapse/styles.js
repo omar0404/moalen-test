@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import configs from '../../../configs'
-
 export const Container = styled.div`
 	border-radius: 24px;
 	background: #fff;

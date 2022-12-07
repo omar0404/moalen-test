@@ -9,12 +9,6 @@ export const Container = styled.div`
     padding: 24px 16px;
 `
 
-export const Grid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 24px;
-    width: 100%;
-`
 
 export const Links = styled.div`
     color: ${configs.colors.primary};
@@ -23,13 +17,6 @@ export const Links = styled.div`
     text-align: center;
 `
 
-export const LinkLine = styled.div`
-    color: ${configs.colors.primary};
-    font-size: 14px;
-    a {
-        color: ${configs.colors.secondary};
-    }
-`
 
 export const Title = styled.div`
     color: ${configs.colors.primary};

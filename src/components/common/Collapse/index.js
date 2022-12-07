@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp, FaTimes, FaTrashAlt, FaUndoAlt } from "react-icons/fa";
 import { Animated } from "react-animated-css";
 

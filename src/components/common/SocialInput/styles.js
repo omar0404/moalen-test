@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import colors from '../../../configs/colors'
 import configs from '../../../configs'
 
 export const Container = styled.div`

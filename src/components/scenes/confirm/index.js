@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router';
 
@@ -11,34 +11,10 @@ import Layout from '../../common/Layout'
 
 import { Container , ButtonLink , Title, SubTitle, SubTitle2, StyledIcon ,ErrorIcon } from './styles';
 
-// export async function getStaticPaths() {
-// 	const res = await api.fetch('/quotations')
-// 	const quotas = res.data;
-// 	//console.log('hii quotas from getStaticPaths' ,quotas )
-// 	const paths = quotas.map((item) => ({
-// 	  params: { id: item.id },
-// 	}))
-// 	return { paths, fallback: false }
-// } 
-// export async function getStaticProps(context) {
-// 	//console.log('context',context);
-// 	//console.log('router.query.id',router.query.id);
-// 	const res = await api.fetch(`/quotations/${context.params.id}/confirm`)
-// 	const quotas = res
-// 	//console.log('hii quotas from getStaticProps' ,quotas )
-
-// 	//console.log('res',res);
-// 	return {
-// 	  props: {
-// 		quotas
-// 	  },
-// 	}
-// }
 export default function Confirm({quotas}) {
-	//const [formFields, setFeilds] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [errorFlag, seterrorFlag] = useState(false);
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 	const router = useRouter();
 
 	const init = async () => {
@@ -46,9 +22,6 @@ export default function Confirm({quotas}) {
 		try {
 			let res = await api.get(url);
 			if(!res.data.error) {
-				// enqueueSnackbar('', {
-				// 	variant: 'success',
-				// });
 				seterrorFlag(false);
 			} else {
 				enqueueSnackbar(res.message, {
@@ -77,8 +50,6 @@ export default function Confirm({quotas}) {
 		init();
 	}, []);
 
-	const onChangeHandling = ()=>{}
-
 	return <Layout title={"موافقه العرض"} backLink={"/"}>
 		<Container>
 			{!errorFlag && <div><Title><StyledIcon><FiCheckCircle /></StyledIcon> تم التاكيد </Title>
@@ -92,13 +63,3 @@ export default function Confirm({quotas}) {
 		</Container>
 	</Layout>
 };
-
-
-//   export async function getServerSideProps (context) {
-// 	const id = context.params.id;
-// 	return {
-// 	  props: {
-// 		id,
-// 	  }
-// 	};
-//   };

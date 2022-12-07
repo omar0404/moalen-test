@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-import DatePicker from "react-datepicker";
+import React, { useState, useEffect } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import { useSnackbar } from 'notistack';
 
@@ -9,7 +8,7 @@ import { Container, Input, Label, Error } from './styles';
 
 export default function DateInput(props) {
 	const [date, setDate] = useState(!!props.value && !!props.value.toDate ? props.value.toDate() : (moment().add(2, 'days').toDate()));
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 	useEffect(() => {
 		if (props.onChange) {
 			let twoDays = moment().add(2, 'days');

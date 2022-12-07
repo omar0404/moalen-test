@@ -1,5 +1,4 @@
 import React,{forwardRef} from 'react';
-import { MdKeyboardArrowDown } from "react-icons/md";
 import {FaCaretDown } from "react-icons/fa";
 import Select from 'react-select';
 

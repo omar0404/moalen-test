@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import Link from 'next/link';
-import { useRouter} from 'next/router';
 
 
-import * as api from '../../../utils/api';
 import getImage from '../../../utils/getImage';
 
-import Image from 'next/image';
 import { FaPlus, FaCheck, FaYoutube, FaSnapchatGhost, FaFacebookF, FaTwitter, FaInstagram, FaTiktok ,FaEllipsisH } from "react-icons/fa";
 
 import AddToCartModal from '../AddToCartModal'
@@ -14,7 +11,6 @@ import moment from 'moment/min/moment-with-locales';
 moment.locale('ar-sa');
 import useAddToCartModal from '../../../hooks/useAddToCartModal'
 import { UserContext, } from '../../../containers/User';
-import { useSnackbar } from 'notistack';
 
 
 import { StyledTag ,Card,CardContent,  CardHeader, 

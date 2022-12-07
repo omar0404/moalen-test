@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Geocode from "react-geocode";
 import configs from '../../../configs'
-import Head from 'next/head'
 
 import { Container, Input, Label, Error, MapContainer, InputDropDown } from './styles';
 

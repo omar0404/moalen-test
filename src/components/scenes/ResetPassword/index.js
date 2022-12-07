@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSnackbar } from 'notistack';
 
-import { useRouter } from 'next/router'
 import Link from 'next/link';
 
 import * as api from '../../../utils/api';
-
-import { UserContext, } from '../../../containers/User'
 
 import Layout from '../../common/LoginLayout'
 import Form from '../../common/Form'
@@ -15,21 +12,11 @@ import Loader from '../../common/Loader'
 import fields from './fields'
 
 
-import { Container, Grid, LinkLine, Links, Title, StyledIcon } from './styles';
+import { Container, LinkLine, Links } from './styles';
 
 export default function Flow() {
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-	const router = useRouter()
+	const { enqueueSnackbar } = useSnackbar();
 	const [loading, setLoading] = useState(false);
-	const user = useContext(UserContext);
-
-	useEffect(() => {
-		init();
-	}, []);
-
-	const init = async () => {
-
-	};
 
 	const submit = async (values) => {
 		setLoading(true);

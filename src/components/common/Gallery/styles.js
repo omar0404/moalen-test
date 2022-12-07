@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components';
 import configs from '../../../configs'
 
@@ -119,19 +118,6 @@ export const FileName = styled.span`
     position : absolute;
     bottom: 5%;
     right: 40%
-`
-
-export const Img = styled.div`
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 50px;
-    margin: 24px 0;
-    border-radius: 24px;
-    width: 100px;
-    border: ${configs.colors.negativeLight} 1px solid;
-    border-radius: 24px;
-    background-color: rgba(0, 0, 0, 0.1);
 `
 
 export const Error = styled.p`

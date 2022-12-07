@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
-import { useRouter } from 'next/router'
-import { FiCheck, FiCheckCircle } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
 import { FaYoutube, FaLink, FaSnapchatGhost, FaFacebookF, FaTwitter, FaInstagram, FaTiktok, FaTimes } from "react-icons/fa";
 import moment from 'moment/min/moment-with-locales'
 moment.locale('ar-sa');
@@ -44,7 +43,7 @@ export default function Cart() {
 	const [sent, setSent] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [total, setTotal] = useState("");
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 	const [message, setMessage] = useState('تم إستلام طلب السعر، وسنقوم بالتواصل معك قريبًا');
 	const [defaultValues , setDefaultValue] = useState({
 		company_name: user.user.company_name,
@@ -53,7 +52,6 @@ export default function Cart() {
 		company_field: user.user.company_field,
 		name: user.user.name
 	})
-	const router = useRouter()
 
 	useEffect(() => {
 		let total = 0;
@@ -71,17 +69,6 @@ export default function Cart() {
 		}
 		setTotal(total);
 	}, [user.cart]);
-
-	useEffect(() => {
-		// setDefaultValue({
-		// 	company_name: user.user.company_name,
-		// 	company_email: user.user.email,
-		// 	company_mobile: user.user.mobile,
-		// 	company_field: user.user.company_field,
-		// 	name: user.user.name
-		// });
-		// console.log('defaultValues',defaultValues)
-	},[])
 
 	const deleteSubItem = async (id, i) => {
 		let cartObject = JSON.parse(JSON.stringify(user.cart));

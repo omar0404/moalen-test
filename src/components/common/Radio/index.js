@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MdRadioButtonChecked, MdRadioButtonUnchecked } from "react-icons/md";
 
-import { Container, Select, Label, Error, SelectTag, SelectContainer, RadioTag } from './styles';
+import { Container, Label, Error, SelectTag, SelectContainer, RadioTag } from './styles';
 
 export default function RadioComponent(props) {
     const [value, setValue] = useState(props.value);

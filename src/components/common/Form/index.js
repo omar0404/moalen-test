@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useContext ,useRef} from 'react';
-import { RiEdit2Line } from "react-icons/ri";
+import React, { useState, useEffect,useRef} from 'react';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
-import { useRouter } from 'next/router';
 import { ScrollToError } from './ScrollToError'
 
-import { StyledCard, Content, Title, ButtonContainer ,CompanyPlociesBox } from './styles';
+import { Content, Title, ButtonContainer ,CompanyPlociesBox } from './styles';
 
-import Layout from '../Layout';
-import Card from '../Card';
 import Input from '../Input';
 import PhoneInput from '../PhoneInput';
 import DateInput from '../DateInput';
@@ -23,7 +19,6 @@ import FileInput from '../FileInput';
 import SocialInput from '../SocialInput';
 import MultiTagSelect from '../MultiTagSelect';
 import TagDropdown from '../TagDropdown';
-import ModalCompoent from '../Modal';
 import InputWithLabelComponent from '../InputWithLabel';
 import InputAreaWithLabel from '../InputAreaWithLabel';
 import SelectWithLabel from '../SelectWithLabel';
@@ -33,15 +28,10 @@ import Gallery from '../Gallery';
 import Avatar from '../Avatar';
 import TagDropdownWithLabel from '../TagDropdownWithLabel';
 
-import { UserContext, } from '../../../containers/User'
-
 export default function Form(props) {
-	const router = useRouter()
-
 	let id = props.id;
 	let fields = props.fields;
 
-	const user = useContext(UserContext);
 	const [loading, setLoading] = useState(false);
 
 	let initialValuesObj = {};
@@ -52,7 +42,7 @@ export default function Form(props) {
 
 	
 
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+	const { enqueueSnackbar } = useSnackbar();
 
 	const init = async () => {
 		setLoading(true);

@@ -128,17 +128,6 @@ export const MenuItem = styled.a`
 	cursor: pointer;
 `
 
-export const SignInButton = styled.a`
-	padding: 2px 16px 9px;
-	border-radius: 4px;
-	font-size: 14px;
-	color: white;
-	background-color: #edbb42;
-	@media only screen and (max-width: 667px) {
-		display: none;
-	}
-
-	`
 
 	export const IconLogo = styled.div`
     height: 40px;

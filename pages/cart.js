@@ -1,6 +1,4 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import Cart from '../src/components/scenes/Cart'
 

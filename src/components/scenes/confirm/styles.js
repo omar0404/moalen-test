@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import configs from '../../../configs';
-import colors from '../../../configs/colors'
 
 export const Container = styled.div`
     padding: 32px 24px 16px;

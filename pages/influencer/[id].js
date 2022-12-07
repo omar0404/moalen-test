@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import Influencer from '../../src/components/scenes/Influencer'
 

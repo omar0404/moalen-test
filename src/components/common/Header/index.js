@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
-import configs from '../../../configs';
-import { BsSliders, BsX, BsList } from "react-icons/bs";
+import {BsX, BsList } from "react-icons/bs";
 import { BiHome, BiListUl, BiMailSend, BiLogOut } from "react-icons/bi";
 import { useRouter } from 'next/router'
 

@@ -1,27 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RiLoader2Line, RiCheckLine } from "react-icons/ri";
 import { FaUpload } from "react-icons/fa";
 import Image from 'next/image';
-import configs from '../../../configs';
 
 import {myLoader} from '../../../utils/loader';
 
-import { Container, Input, Label, Error, LabelContainer, FileName, Img, InputContainer , ImageBox } from './styles';
-
-
-const timeKey = () => {
-	var result = '';
-	var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	var charactersLength = characters.length;
-	let d = new Date();
-	let time = '' + d.getTime();
-
-	for (var i = 0; i < time.length; i++) {
-		result += characters.charAt(Math.floor((time[i] / 10) * Math.random() * charactersLength));
-	}
-	return result;
-
-}
+import { Container, Input, Label, Error, LabelContainer, InputContainer , ImageBox } from './styles';
 
 
 export default function Avatar(props) {
@@ -85,7 +69,6 @@ export default function Avatar(props) {
 						:
 						<FaUpload />
 				)}
-			{/* <FileName>{fileName}</FileName> */}
 		</LabelContainer>
 		</InputContainer>
 		{!!props.error && <Error>{props.error}</Error>}

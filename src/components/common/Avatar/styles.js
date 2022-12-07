@@ -137,30 +137,6 @@ export const LabelContainer = styled.label`
     }
 `
 
-export const FileName = styled.span`
-    font-size: 13px;
-    font-weight: bold;
-    padding : 2px 15px 5px;
-    color: #fff;
-    background: ${configs.colors.primary};
-    position : absolute;
-    top: 60%;
-    right: 40%
-`
-
-export const Img = styled.div`
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 50px;
-    margin: 24px 0;
-    border-radius: 24px;
-    width: 100px;
-    border: ${configs.colors.negativeLight} 1px solid;
-    border-radius: 24px;
-    background-color: rgba(0, 0, 0, 0.1);
-`
-
 export const Error = styled.p`
     color: red;
     font-size: 12px;

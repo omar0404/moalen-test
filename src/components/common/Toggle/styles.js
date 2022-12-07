@@ -11,20 +11,6 @@ export const Container = styled.div`
     margin: ${props => !!props.noMargin ? '0 0 0px' : '0 0 24px'};
 `
 
-export const Input = styled.input`
-    width: 16px;
-    height: 16px;
-    box-sizing: border-box;
-    box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.07);
-    border: none;
-    border-radius: 24px;
-    margin: 0 16px 0 0;
-
-    &:focus {
-        outline: 1px solid rgba(0, 0, 0, 0.05);
-        outline-offset: 1px;
-    }
-`
 
 export const Label = styled.label`
     font-size: 12px;

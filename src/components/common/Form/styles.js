@@ -1,10 +1,5 @@
 import styled from 'styled-components';
-import Card from '../Card';
 import configs from '../../../configs'
-
-export const StyledCard = styled(Card)`
-    width: 500px;
-`
 
 export const Content = styled.div`
     width: 100%;

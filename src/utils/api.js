@@ -36,31 +36,8 @@ export const get = async (endPoint, query, token = "", header = {}) => {
 		params: query
 	});
 }
-export const fetch = async (endPoint, query, token = "", header = {}) => {
-	let headers = await getHeaders(token, header);
-	return fetch(appConfig.apiURI + endPoint, {
-		headers: headers,
-		params: query
-	});
-}
-
-export const getLink = (endPoint, query = {}, token = "", header = {}) => {
-	let url = appConfig.apiURI + endPoint;
-
-	return url;
-}
 
 export const post = async (endPoint, data, token = "", header = {}) => {
 	let headers = await getHeaders(token, header);
 	return axios.post(appConfig.apiURI + endPoint, data, {headers: headers, timeout: 20000});
-}
-
-export const patch = async (endPoint, data, token = "", header = {}) => {
-	let headers = await getHeaders(token, header);
-	return axios.patch(appConfig.apiURI + endPoint, data, {headers: headers});
-}
-
-export const deleteRequest = async (endPoint, data, token = "", header = {}) => {
-	let headers = await getHeaders(token, header);
-	return axios.delete(appConfig.apiURI + endPoint, {headers: headers});
 }

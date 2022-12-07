@@ -1,62 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useSnackbar } from 'notistack';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router'
 
-import { FiCheck, FiCheckCircle } from "react-icons/fi";
-import { FaYoutube, FaSnapchatGhost, FaFacebookF, FaTwitter, FaInstagram, FaTiktok, FaTimes } from "react-icons/fa";
+import { FiCheckCircle } from "react-icons/fi";
 import moment from 'moment/min/moment-with-locales'
 moment.locale('ar-sa');
 
 import * as api from '../../../utils/api';
 
-import { UserContext, } from '../../../containers/User'
-
 import Layout from '../../common/Layout'
 import Card from '../../common/Card'
-import Form from '../../common/Form'
 import Loader from '../../common/Loader'
-import Collapse from '../../common/Collapse'
 import Button from '../../common/Button'
 
-import { Container, Content, DeleteIcon, StatusText, SentContent, SentSubTitle, SentIcon, InfluencerContent, PlatformRow, PlatformRowContent, Title, SubTitle, SubTitle2, HeaderContent, InfluencerPlatform, Avatar, InfluencerName, StyledIcon } from './styles';
-
-const PLATFORM_ICONS = {
-	youtube: <FaYoutube />,
-	snapchat: <FaSnapchatGhost />,
-	twitter: <FaTwitter />,
-	instagram: <FaInstagram />,
-	tiktok: <FaTiktok />,
-	facebook: <FaFacebookF />
-};
-
-const PLATFORM_NAMES = {
-	youtube: "يوتيوب",
-	snapchat: "سنابشات",
-	twitter: "تويتر",
-	instagram: "إنستاقرام",
-	tiktok: "تيكتوك",
-	facebook: "فيسبوك"
-};
+import { Container, SentContent, SentSubTitle, SentIcon,Title, SubTitle2 } from './styles';
 
 
 export default function Cart() {
-	const user = useContext(UserContext);
 	const [loading, setLoading] = useState(false);
 	const [sent, setSent] = useState(false);
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const router = useRouter();
-	const [data, setData] = useState({});
-
-	useEffect(() => {
-		init();
-	}, []);
-
-
-	const init = async () => {
-		/*let res = await api.get(`/api/v1/front/ads/quotations/${router.query.id}/`);
-		setData(res.data)
-		//console.log(res.data);*/
-	};
 
 	const submit = async () => {
 		let res = await api.get(`/quotations/${router.query.id}/confirm`, {

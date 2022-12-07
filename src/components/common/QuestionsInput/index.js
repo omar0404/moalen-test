@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RiAddCircleLine, } from "react-icons/ri";
-import { MdRadioButtonChecked, MdRadioButtonUnchecked } from "react-icons/md";
 
-import { Container, ItemContainer, DeleteIconAnchor, ActionsContainer, TypesContainer, RadioButton, AnswerAddButton, InputContainer, AnswerInputContainer, Input, Label, Error, AddButton, DeleteIcon } from './styles';
+import { Container, ItemContainer, DeleteIconAnchor, ActionsContainer, AnswerAddButton, InputContainer, AnswerInputContainer, Input, Label, Error, AddButton, DeleteIcon } from './styles';
 
 export default function QuestionsInput(props) {
     let initialValue = [];
-    let initialKeywords = [];
     for (let i = 0; i < props.min; i++) {
         initialValue.push({ label: '', answers: [{0: "", 1: ""}, {0: "", 1: ""}], type: 'multiple' });
     }

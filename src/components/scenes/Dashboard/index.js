@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router'
 
 
@@ -8,10 +7,9 @@ import Table from '../../common/Table'
 import { UserContext } from '../../../containers/User'
 
 
-import { Container, Grid } from './styles';
+import { Container } from './styles';
 
 export default function Flow() {
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const {userType} = useContext(UserContext);
 	const router = useRouter()
 

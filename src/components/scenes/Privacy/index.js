@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import moment from 'moment/min/moment-with-locales';
 import configs from '../../../configs';
 import TermCard from '../../common/TermCard';

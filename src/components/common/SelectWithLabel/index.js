@@ -11,10 +11,6 @@ export default function SelectWithLabel(props) {
         setValue(props.value);
     }, [props.value]);
 
-    const onChangeVal = (value) => {
-        if (props.onChange)
-            props.onChange(value);
-    };
     return <Container {...props}>
         <InputContainer>
             {!!props.label && <Label>{props.label}</Label>}

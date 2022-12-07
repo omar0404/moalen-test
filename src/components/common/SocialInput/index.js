@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { MdRadioButtonChecked, MdRadioButtonUnchecked } from "react-icons/md";
 import * as api from '../../../utils/api'
 
 import Input from '../Input';
 
-import { Container, Select, Label, Error, SelectTag, SelectContainer, RadioTag } from './styles';
+import { Container, Label, Error, SelectContainer } from './styles';
 
 export default function SocialInputsComponent(props) {
     const [value, setValue] = useState(props.value || []);
