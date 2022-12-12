@@ -125,12 +125,24 @@ export default function ListCard(props) {
 			<Link href={`/influencer/${data.id}`}>
 				<CardContent>
 					<CardHeader>
+						<div    style={{
+        position: "relative",
+        width: "52px",
+        height: "52px",
+        maxHeight: "200px",
+        maxWidth: "200px",
+      }}>
 						<CardAvatar 
+						  layout='fill'
+							sizes="(max-width: 52px) 42vw,
+											(max-width: 52px) 42vw,
+											42vw"
 						   loader={myLoader} 
 						   alt="influencer-avatar"
       					   width={52}
      					   height={52} 
 						   src={getImage(data.avatar)} />
+							 </div>
 						<div className="title">
 							<strong>{data.name}</strong>
 							<span>{data.specialization}</span>
